@@ -10,7 +10,5 @@ import lombok.Setter;
 public class BaseDto <ID extends Number> {
 	
 	private ID id;
-	
-	private Integer statusCode;
 
 }
