@@ -16,7 +16,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "shop_order_items")
 public class OrderItem extends BaseEntity<Long>  {
@@ -32,5 +31,15 @@ public class OrderItem extends BaseEntity<Long>  {
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+	public OrderItem(Order order, Product product, int quantity, BigDecimal price) {
+		super();
+		this.quantity = quantity;
+		this.price = price;
+		this.order = order;
+		this.product = product;
+	}
+    
+    
 
 }

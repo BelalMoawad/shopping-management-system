@@ -64,7 +64,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/name/{name}")
-	public ResponseEntity<?> findByName(String name) {
+	public ResponseEntity<?> findByName(@PathVariable String name) {
 		List<ProductDto> productDtos = productMapper.map(productService.findByName(name));
 		return  ResponseEntity.ok(productDtos);	
 	}

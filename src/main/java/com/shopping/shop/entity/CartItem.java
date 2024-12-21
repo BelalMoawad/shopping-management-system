@@ -3,11 +3,13 @@ package com.shopping.shop.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shopping.base.entity.BaseEntity;
-import com.shopping.shop.OrderStatus;
+import com.shopping.shop.enums.OrderStatus;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -27,7 +29,7 @@ import com.shopping.usermanagement.entity.AppUser;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "shop_orders")
+@Table(name = "shop_cart_items")
 public class CartItem extends BaseEntity<Long> {
 	
 	private int quantity;
@@ -38,7 +40,7 @@ public class CartItem extends BaseEntity<Long> {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @JsonIgnore
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cart_id")
     private Cart cart;
@@ -46,5 +48,5 @@ public class CartItem extends BaseEntity<Long> {
     public void setTotalPrice() {
         this.totalPrice = this.unitPrice.multiply(new BigDecimal(quantity));
     }
-    
+
 }

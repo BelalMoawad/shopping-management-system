@@ -5,7 +5,8 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import com.shopping.base.entity.BaseEntity;
-import com.shopping.shop.OrderStatus;
+import com.shopping.shop.enums.OrderStatus;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

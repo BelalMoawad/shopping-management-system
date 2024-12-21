@@ -1,4 +1,4 @@
-package com.shopping.shop;
+package com.shopping.shop.enums;
 
 public enum OrderStatus {
 	PENDING,
