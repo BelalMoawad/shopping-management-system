@@ -74,7 +74,11 @@
             <artifactId>lombok-mapstruct-binding</artifactId>
             <version>${mapstruct-lombok.version}</version>
         </dependency>  
-		 
+		<!-- spring security --> 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
