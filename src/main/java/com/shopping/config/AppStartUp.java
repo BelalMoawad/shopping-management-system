@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.shopping.usermanagement.entity.AppUser;
@@ -20,6 +21,9 @@ public class AppStartUp implements CommandLineRunner {
 	@Autowired
 	private RoleService roleService;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		addRoleDemoData();
@@ -28,17 +32,17 @@ public class AppStartUp implements CommandLineRunner {
 	
 	private void addRoleDemoData() {
 		if(roleService.findAll().isEmpty()) {
-			roleService.insert(new Role("Admin"));
-			roleService.insert(new Role("User"));
+			roleService.insert(new Role("ROLE_ADMIN"));
+			roleService.insert(new Role("ROLE_USER"));
 		}
 	}
 	
 	private void addUserDemoData() {
 		if(appUserService.findAll().isEmpty()) {
-			appUserService.insert(new AppUser("Ahmed", "Ali", "mail", "123",
-								   Arrays.asList(roleService.findByName("Admin"))));
-			appUserService.insert(new AppUser("Omar", "Reda", "user", "321",
-					   Arrays.asList(roleService.findByName("User"))));
+			appUserService.insert(new AppUser("Ahmed", "Ali", "admin", passwordEncoder.encode("123"),
+								   Arrays.asList(roleService.findByName("ROLE_ADMIN"))));
+			appUserService.insert(new AppUser("Omar", "Reda", "user", passwordEncoder.encode("321"),
+					   Arrays.asList(roleService.findByName("ROLE_USER"))));
 		}
 	}
 }
