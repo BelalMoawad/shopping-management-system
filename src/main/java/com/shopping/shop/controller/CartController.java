@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.shopping.security.entity.AppUser;
 import com.shopping.shop.dto.CartDto;
 import com.shopping.shop.entity.Cart;
 import com.shopping.shop.mapper.CartMapper;
 import com.shopping.shop.service.CartService;
-import com.shopping.usermanagement.entity.AppUser;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 

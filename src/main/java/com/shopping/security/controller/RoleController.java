@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.controller;
+package com.shopping.security.controller;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.shopping.usermanagement.dto.RoleDto;
-import com.shopping.usermanagement.entity.Role;
-import com.shopping.usermanagement.mapper.RoleMapper;
-import com.shopping.usermanagement.service.RoleService;
+import com.shopping.security.dto.RoleDto;
+import com.shopping.security.entity.Role;
+import com.shopping.security.mapper.RoleMapper;
+import com.shopping.security.service.RoleService;
 
 
 @RestController

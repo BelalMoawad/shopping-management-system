@@ -6,6 +6,7 @@ import com.shopping.base.entity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ import lombok.Setter;
 @Table(name = "shop_categories")
 public class Category extends BaseEntity<Long> {
 
+	@NotBlank
 	private String name;
 	
 	@JsonIgnore

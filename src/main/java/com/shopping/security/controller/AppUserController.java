@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.controller;
+package com.shopping.security.controller;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shopping.security.dto.AppUserDto;
+import com.shopping.security.mapper.AppUserMapper;
+import com.shopping.security.service.AppUserService;
 import com.shopping.shop.dto.CartDto;
-import com.shopping.usermanagement.dto.AppUserDto;
-import com.shopping.usermanagement.mapper.AppUserMapper;
-import com.shopping.usermanagement.service.AppUserService;
 
 
 @RestController

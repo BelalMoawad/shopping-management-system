@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.security;
+package com.shopping.security.config;
 
 import java.io.IOException;
 
@@ -7,9 +7,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.shopping.usermanagement.entity.AppUser;
-import com.shopping.usermanagement.entity.SecurityUser;
-import com.shopping.usermanagement.repository.AppUserRepository;
+import com.shopping.security.entity.AppUser;
+import com.shopping.security.entity.SecurityUser;
+import com.shopping.security.repository.AppUserRepository;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

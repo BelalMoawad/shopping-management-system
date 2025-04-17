@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.service;
+package com.shopping.security.service;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
@@ -9,11 +9,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.shopping.usermanagement.authentication.AuthenticationRequest;
-import com.shopping.usermanagement.authentication.AuthenticationResponse;
-import com.shopping.usermanagement.entity.AppUser;
-import com.shopping.usermanagement.repository.AppUserRepository;
-import com.shopping.usermanagement.security.JwtService;
+import com.shopping.security.auth.AuthenticationRequest;
+import com.shopping.security.auth.AuthenticationResponse;
+import com.shopping.security.config.JwtService;
+import com.shopping.security.entity.AppUser;
+import com.shopping.security.repository.AppUserRepository;
 
 @RequiredArgsConstructor
 @Service
@@ -24,16 +24,16 @@ public class AuthenticationService {
 	private final JwtService jwtService;
 	private final PasswordEncoder passwordEncoder;
 	        
-	public AuthenticationResponse register(AppUser request){
-        var user = new AppUser();
+	public void register(AppUser request){
+		// must check first 
+		
+		AppUser user = new AppUser();
         user.setFirstName(request.getFirstName());
         user.setLastName(request.getLastName());
         user.setUserName(request.getUserName());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRoles(request.getRoles());
         appUserRepository.save(user);
-        String token = jwtService.generateToken(user, generateExtraClaims(user));
-        return new AuthenticationResponse(token);
     }
 	
 	public AuthenticationResponse login(AuthenticationRequest authenticationRequest) {

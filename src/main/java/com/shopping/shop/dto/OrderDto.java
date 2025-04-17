@@ -5,8 +5,9 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import com.shopping.base.dto.BaseDto;
+import com.shopping.security.dto.AppUserDto;
 import com.shopping.shop.enums.OrderStatus;
-import com.shopping.usermanagement.dto.AppUserDto;
+
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Getter;

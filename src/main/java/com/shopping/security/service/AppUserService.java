@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.service;
+package com.shopping.security.service;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +7,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.shopping.base.service.BaseService;
-import com.shopping.usermanagement.entity.AppUser;
-import com.shopping.usermanagement.entity.SecurityUser;
-import com.shopping.usermanagement.repository.AppUserRepository;
+import com.shopping.security.entity.AppUser;
+import com.shopping.security.entity.SecurityUser;
+import com.shopping.security.repository.AppUserRepository;
+
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2

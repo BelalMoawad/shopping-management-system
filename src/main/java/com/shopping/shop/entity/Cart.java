@@ -6,18 +6,20 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shopping.base.entity.BaseEntity;
+import com.shopping.security.entity.AppUser;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
-import com.shopping.usermanagement.entity.AppUser;
 
 @Log4j2
 @Setter
@@ -28,6 +30,7 @@ import com.shopping.usermanagement.entity.AppUser;
 @Table(name = "shop_carts")
 public class Cart extends BaseEntity<Long> {
 	
+	@Max(value = 1000000, message = "Maximum card totalPrice is 1 milion EGP")
 	private BigDecimal totalAmount = BigDecimal.ZERO;
 	
 	

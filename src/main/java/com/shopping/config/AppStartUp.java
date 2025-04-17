@@ -7,10 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.shopping.usermanagement.entity.AppUser;
-import com.shopping.usermanagement.entity.Role;
-import com.shopping.usermanagement.service.AppUserService;
-import com.shopping.usermanagement.service.RoleService;
+import com.shopping.security.entity.AppUser;
+import com.shopping.security.entity.Role;
+import com.shopping.security.service.AppUserService;
+import com.shopping.security.service.RoleService;
 
 @Component
 public class AppStartUp implements CommandLineRunner {

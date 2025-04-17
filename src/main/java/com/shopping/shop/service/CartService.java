@@ -4,10 +4,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.shopping.base.service.BaseService;
+import com.shopping.security.entity.AppUser;
+import com.shopping.security.service.AppUserService;
 import com.shopping.shop.entity.Cart;
 import com.shopping.shop.repository.CartRepository;
-import com.shopping.usermanagement.entity.AppUser;
-import com.shopping.usermanagement.service.AppUserService;
 
 import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;

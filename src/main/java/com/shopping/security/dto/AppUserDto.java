@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.dto;
+package com.shopping.security.dto;
 
 
 import com.shopping.base.dto.BaseDto;

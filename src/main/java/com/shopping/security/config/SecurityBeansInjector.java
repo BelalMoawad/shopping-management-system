@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.security;
+package com.shopping.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -8,7 +8,9 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import com.shopping.usermanagement.service.AppUserService;
+
+import com.shopping.security.service.AppUserService;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

@@ -11,6 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,14 +28,18 @@ import lombok.Setter;
 @Table(name = "shop_products")
 public class Product extends BaseEntity<Long> {
 	
+	@NotBlank
 	private String name;
-	
+	@NotBlank
 	private String brand;
-	
+	@NotEmpty
 	private BigDecimal price;
 	
 	private int inventory; // inventory = quantity
 	
+	@Size(min = 50, max = 500,
+	    message = "Product description should have a length between 50 and 500 characters."
+	)
 	private String description;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

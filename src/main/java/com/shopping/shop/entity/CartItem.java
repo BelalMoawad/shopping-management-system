@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shopping.base.entity.BaseEntity;
+import com.shopping.security.entity.AppUser;
 import com.shopping.shop.enums.OrderStatus;
 
 import jakarta.persistence.CascadeType;
@@ -22,7 +23,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.shopping.usermanagement.entity.AppUser;
 
 @Setter
 @Getter

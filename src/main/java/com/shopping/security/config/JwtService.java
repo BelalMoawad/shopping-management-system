@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.security;
+package com.shopping.security.config;
 
 import java.security.Key;
 import java.sql.Date;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.shopping.usermanagement.entity.AppUser;
+import com.shopping.security.entity.AppUser;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

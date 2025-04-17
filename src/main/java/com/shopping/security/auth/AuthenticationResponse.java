@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.authentication;
+package com.shopping.security.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,10 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthenticationRequest {
+public class AuthenticationResponse {
 	
-	private String username;
+	private String jwt;
 	
-	private String password;
-
 }

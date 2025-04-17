@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import com.shopping.base.dto.BaseDto;
+import com.shopping.security.dto.AppUserDto;
+import com.shopping.security.entity.AppUser;
 import com.shopping.shop.entity.CartItem;
-import com.shopping.usermanagement.dto.AppUserDto;
-import com.shopping.usermanagement.entity.AppUser;
 
 import lombok.Getter;
 import lombok.Setter;

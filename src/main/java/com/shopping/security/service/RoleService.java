@@ -1,13 +1,13 @@
-package com.shopping.usermanagement.service;
+package com.shopping.security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.base.service.BaseService;
+import com.shopping.security.entity.AppUser;
+import com.shopping.security.entity.Role;
+import com.shopping.security.repository.RoleRepository;
 import com.shopping.shop.entity.Category;
-import com.shopping.usermanagement.entity.AppUser;
-import com.shopping.usermanagement.entity.Role;
-import com.shopping.usermanagement.repository.RoleRepository;
 
 @Service
 public class RoleService extends BaseService<Role, Long>{

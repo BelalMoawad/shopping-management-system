@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import com.shopping.base.entity.BaseEntity;
+import com.shopping.security.entity.AppUser;
 import com.shopping.shop.enums.OrderStatus;
 
 import jakarta.persistence.CascadeType;
@@ -15,11 +16,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import com.shopping.usermanagement.entity.AppUser;
 
 @Setter
 @Getter
@@ -30,7 +31,7 @@ import com.shopping.usermanagement.entity.AppUser;
 public class Order extends BaseEntity<Long> {
 	
 	private LocalDate orderDate;
-	
+	@Max(value = 1000000, message = "Maximum order totalPrice is 1 milion EGP")
     private BigDecimal totalAmount;
     
     @Enumerated(EnumType.STRING)

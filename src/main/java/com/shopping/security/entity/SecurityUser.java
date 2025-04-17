@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.entity;
+package com.shopping.security.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;

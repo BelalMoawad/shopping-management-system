@@ -1,4 +1,4 @@
-package com.shopping.usermanagement.security;
+package com.shopping.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class SecurityConfig {
             .authenticationProvider(authenticationProvider)
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(auth -> auth
-            		.requestMatchers(HttpMethod.POST, "/auth/authenticate").permitAll()
+            		.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
             		.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
             		.requestMatchers("/error").permitAll()
             		.requestMatchers("/api/v1/user/**").hasRole("ADMIN")
