@@ -3,7 +3,10 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -11,9 +14,11 @@ import org.springframework.stereotype.Service;
 
 import com.shopping.security.auth.AuthenticationRequest;
 import com.shopping.security.auth.AuthenticationResponse;
+import com.shopping.security.auth.RefreshTokenRequest;
 import com.shopping.security.config.JwtService;
 import com.shopping.security.entity.AppUser;
 import com.shopping.security.repository.AppUserRepository;
+import com.shopping.shop.exception.UserAlreadyExistsException;
 
 @RequiredArgsConstructor
 @Service
@@ -24,8 +29,11 @@ public class AuthenticationService {
 	private final JwtService jwtService;
 	private final PasswordEncoder passwordEncoder;
 	        
-	public void register(AppUser request){
-		// must check first 
+	public void register(AppUser request){	
+		// must check if userName is taken before
+		Optional<AppUser> appUser = appUserRepository.findByUserName(request.getUserName());
+		if(appUser.isPresent()) 
+			throw new UserAlreadyExistsException("Username \'" + request.getUserName() + "\' is already taken");
 		
 		AppUser user = new AppUser();
         user.setFirstName(request.getFirstName());
@@ -46,9 +54,26 @@ public class AuthenticationService {
 		
 		AppUser appUser = appUserRepository.findByUserName(authenticationRequest.getUsername()).get();
 		 
-		String jwt = jwtService.generateToken(appUser, generateExtraClaims(appUser));
+		String accessToken = jwtService.generateToken(appUser, generateExtraClaims(appUser));
+		String refreshToken = jwtService.generateRefreshToken(appUser);
 		
-		return new AuthenticationResponse(jwt);
+		return new AuthenticationResponse(accessToken, refreshToken);
+	}
+	
+	public ResponseEntity<?> refreshToken(RefreshTokenRequest refreshTokenRequest) {
+		if (jwtService.isTokenExpired(refreshTokenRequest.getRefreshToken())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        String username = jwtService.extractUsername(refreshTokenRequest.getRefreshToken());
+        AppUser user = appUserRepository.findByUserName(username).orElseThrow();
+
+        if (!jwtService.isTokenValid(refreshTokenRequest.getRefreshToken(), user)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        String newAccessToken = jwtService.generateToken(user, generateExtraClaims(user));
+        return ResponseEntity.ok(new AuthenticationResponse(newAccessToken, refreshTokenRequest.getRefreshToken()));
 	}
 
 

@@ -13,19 +13,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
+                .body(new ErrorResponse(HttpStatus.NOT_FOUND.name(), ex.getMessage()));
     }
-   
+    
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<?> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
+    	return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new ErrorResponse(HttpStatus.CONFLICT.name(), ex.getMessage()));
+    }
 }
 
 @Getter
 @Setter
 class ErrorResponse {
-    private int statusCode;
+    private String status;
     private String message;
 
-    public ErrorResponse(int statusCode, String message) {
-        this.statusCode = statusCode;
+    public ErrorResponse(String status, String message) {
+        this.status = status;
         this.message = message;
     }
 
